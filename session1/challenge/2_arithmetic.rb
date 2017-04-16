@@ -9,4 +9,7 @@
 # arithmetic2(-6, -7)  # => -3.5
 
 def arithmetic2(a, b)
+  #find which one is smaller
+  a > b ? b.to_f / 2 : a.to_f / 2
+  #return smaller/2 as float
 end
