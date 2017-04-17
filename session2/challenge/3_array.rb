@@ -7,5 +7,8 @@
 
 class String
   def every_other_char
+    string = []
+    split("").each_slice(2){ |a,b| string.push(a) }
+    string.join
   end
 end
