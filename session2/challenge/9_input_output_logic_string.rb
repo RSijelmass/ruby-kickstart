@@ -24,11 +24,11 @@
 # USER:     BYE
 
 def deaf_grandma
-
+  while string = gets.chomp!
+    break if string == "BYE"
+    string == string.upcase && string != "" ? puts("NO, NOT SINCE 1938!") : puts("HUH?! SPEAK UP, SONNY!")
+  end
 end
-
-
-
 
 
 # This will call your code so you can run it from the terminal.
