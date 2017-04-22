@@ -8,3 +8,11 @@
 # staircase 4  # => {1 => [], 3 => [2]}
 # staircase 5  # => {1 => [], 3 => [2], 5 =>[2, 4]}
 
+def staircase(num)
+    hash = {};  nums = Array(1..num); evens = []
+    nums.each do |n|
+      evens << n if n % 2 == 0
+      hash[n] = evens.select{ |even| even < n} if n % 2 != 0
+    end
+    hash
+end
