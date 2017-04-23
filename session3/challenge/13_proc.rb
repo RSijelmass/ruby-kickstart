@@ -52,5 +52,33 @@
 #   end
 # end       # => ["a", "m", "r", 1, 3, 4, 9, 2.5, 9.0, 25.8]
 
-def your_sort
+def your_sort(array, &block)
+  #bubblesort
+  block ||= Proc.new{ |a,b| a <=> b }
+
+  array.each_index do |i1|
+    array.each_index do |i2|
+      sort = block.call(array[i1], array[i2])
+      array[i1], array[i2] = array[i2], array[i1] if sort < 0
+    end
+  end
 end
+
+
+
+
+#your_sort [24, 0, 68, 44, 68, 47, 42, 66, 89, 22]  # => [0, 22, 24, 42, 44, 47, 66, 68, 68, 89]
+
+# Original written script: (came into trouble wit the "quick brown fox"-sentence)
+# def your_sort(array, iteration = 0, &block)
+#   #bubblesort
+#   block ||= Proc.new{ |a,b| a <=> b }
+#   return array if iteration >= array.length - 1
+#
+#   for i in 0...array.length - 1
+#     sort = block.call(array[i], array[i+1])
+#     array[i], array[i+1] = array[i+1], array[i] if sort > 0
+#   end
+#
+#   your_sort(array, iteration + 1)
+# end
