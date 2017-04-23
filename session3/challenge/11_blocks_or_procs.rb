@@ -30,5 +30,10 @@
 # end
 
 
-def array_init
+def array_init(size=5, &block)
+  if !block
+    arr = Array.new(size) { |i| (i * 100).to_s }
+  else
+    Array(0...size).map{ |n| block.call(n) }
+  end
 end
