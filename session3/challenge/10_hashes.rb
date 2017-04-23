@@ -29,5 +29,18 @@
 # create it from scratch :)
 
 
-def pathify
+def pathify(file_hash = Hash.new)
+  return file_hash.map { |path| '/' + path } if file_hash.is_a? Array
+  filepath = []
+
+  if file_hash.is_a? Hash
+    file_hash.each do |key,value|
+      key = '/' + key
+      value = pathify(value)
+      value.each{ |val| filepath << (key + val)}
+    end
+  end
+  filepath
 end
+
+puts pathify('usr' => {'bin' => ['ruby']}, 'opt' => {'local' => {'bin' => ['sqlite3', 'rsync']} } )

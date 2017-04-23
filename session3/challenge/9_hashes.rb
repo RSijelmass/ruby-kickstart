@@ -29,4 +29,13 @@
 # shared [1,2,3], [3,2,1]            # => [{1=>[true, true], 2=>[true, true], 3=>[true, true]}, [1, 2, 3]]
 
 def shared(a, b)
+  shar_hash = Hash.new { |this_hash, key| this_hash[key] = Array.new }
+  numbers = (a + b).uniq;   both = []
+
+  numbers.each do |n|
+    a.include?(n) ? shar_hash[n] << true : shar_hash[n] << nil
+    b.include?(n) ? shar_hash[n] << true : shar_hash[n] << nil
+    both << n if shar_hash[n] == [true,true]
+  end
+  [shar_hash, both]
 end
