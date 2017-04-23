@@ -65,10 +65,6 @@ def your_sort(array, &block)
 end
 
 
-
-
-#your_sort [24, 0, 68, 44, 68, 47, 42, 66, 89, 22]  # => [0, 22, 24, 42, 44, 47, 66, 68, 68, 89]
-
 # Original written script: (came into trouble wit the "quick brown fox"-sentence)
 # def your_sort(array, iteration = 0, &block)
 #   #bubblesort
