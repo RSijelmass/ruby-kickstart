@@ -17,3 +17,14 @@
 # match_maker true,  true,  true, true, nil     # => [false, true]
 # match_maker true,  true,  true, 0, nil        # => [false, true]
 
+def match_maker(*bools)
+  arr = [];  bool_zero = bools[0]
+  bools.delete_at(0)
+
+  if bool_zero
+    bools.each_slice(2){ |a,b| (a && !b) || !a && b ? arr << true : arr << false }
+  else
+    bools.each_slice(2){ |a,b| (a && b) || (!a && !b) ? arr << true : arr << false }
+  end
+  arr
+end
