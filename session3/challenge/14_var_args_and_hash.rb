@@ -21,11 +21,33 @@
 # problem_14 2,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => true
 # problem_14 3,   5, 6, 45, 99, 13, 5, 6,  :problem => :same_ends    # => false
 
-def problem_14
+def problem_14(*array)
+  if array.last.is_a? Hash
+    problem = array.pop[:problem]
+    array.delete(problem)
+  else
+    problem = :count_clumps
+  end
+  return count_clumps(*array) if problem == :count_clumps
+  return same_ends(*array) if problem == :same_ends
 end
 
-def same_ends
+def same_ends(*array)
+  n_comp = array.first;   array.delete_at(0)
+  arr1 = array[0, n_comp]
+  arr2 = array[-n_comp, n_comp]
+  arr1 == arr2 ? true : false
 end
 
-def count_clumps
+def count_clumps(*array)
+  counter = 0;  switch = "on"
+  for i in 0...array.length
+    if array[i] == array[i+1]
+      counter += 1 if switch == "on"
+      switch = "off"
+    else
+      switch = "on"
+    end
+  end
+  counter
 end
