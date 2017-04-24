@@ -15,3 +15,7 @@
 # head = {:data => 6, :next => head}
 # print_list head                    # >> "6\n5\n4\n3\n2\n1\n"
 
+def print_list(linked)
+  puts linked[:data]
+  print_list(linked[:next]) if linked[:next].is_a? Hash
+end
