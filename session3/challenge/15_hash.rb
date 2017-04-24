@@ -38,3 +38,27 @@
 # middle head                        # => 3
 # head = {:data => 6, :next => head}
 # middle head                        # => 3
+def list_size(linked)
+  return 0 unless linked
+  1 + list_size(linked[:next])
+end
+
+def middle(linked, mid = list_size(linked)/2)
+  return linked[:data] if mid == 0
+  middle(linked[:next], mid - 1)
+end
+
+
+#OWN SCRIPT:
+# def list_size(linked, count = 1)
+#   if linked[:next].is_a? Hash
+#     count += 1
+#     list_size(linked[:next], count)
+#   end
+#   count
+# end
+#
+# def middle(linked, mid = list_size(linked)/2)
+#   return linked[:data] if mid == 0
+#   middle(linked[:next], mid - 1)
+# end
