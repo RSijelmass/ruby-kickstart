@@ -7,3 +7,9 @@
 #
 # print_list_in_reverse head   # >> "1\n2\n"
 
+def print_list_in_reverse(linked, arr = [])
+  puts (arr << linked[:data]).reverse if linked[:next] == nil
+
+  arr << linked[:data]
+  print_list_in_reverse(linked[:next], arr) if linked[:next].is_a? Hash
+end
